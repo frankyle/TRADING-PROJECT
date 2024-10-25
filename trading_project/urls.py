@@ -3,10 +3,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from .views import health_check
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),  # Djoser URLs for user management
     path('auth/', include('djoser.urls.jwt')),  # JWT URLs (login/logout)
+
+
+    # Health check endpoint
+    path('api/health-check/', health_check, name='health_check'),
+
 ]
 
 # Serve media files in development
